@@ -1,0 +1,101 @@
+use javaee_third_batch
+
+//insert
+db.javaee_third_batch.insertOne({ "name": "Titanic", "year": 1995, "director": "Jame Cameron", "actors": [{ "firstName": "Leo", "lastName": " nardo" }] })
+
+db.javaee_third_batch.insertOne({ "name": "The mask", "year": 1995, "director": "Jame Cameron","rating":5, "actors": [{ "firstName": "Leo", "lastName": " nardo" }] })
+
+//insert many 
+db.javaee_third_batch.insertMany([
+    {
+        "name":"Movie 3",
+        "year":2000,
+        "director":"Director 1",
+    },
+    {
+        "name":"Movie 4",
+        "year":2000,
+        "director":"Director 1",
+    },
+])
+//find all
+db.javaee_third_batch.find({})
+
+db.javaee_third_batch.find({"director":"Jame Cameron"})
+
+db.javaee_third_batch.find({"year":{
+                                $in:[1995,2000]
+                                }
+                            })
+db.javaee_third_batch.find({"year":{
+                                $in:[1995,2000]
+                                },
+                            "director":"Jame Cameron"
+                            })
+//Or
+db.javaee_third_batch.find({
+                        
+                            $or:[
+                                {"year":1995},
+                                {"director":"Jame Cameron"}
+                                ]
+                            })
+//And
+db.javaee_third_batch.find({
+                            "rating":5,
+                            $or:[
+                                {"year":1995},
+                                {"director":"Jame Cameron"}
+                                ]
+                            })
+//Nested query
+db.javaee_third_batch.find({
+    "actors.firstName":"Leo"
+})
+//relational
+db.javaee_third_batch.find({
+    "year":{ $gt:1900}
+})
+
+//Match embedded document
+{
+    "actors":{$elemMatch:{
+      "firstName":"Leo"
+    }}
+}
+
+//Mutiple critera
+{
+    "year":{
+        $gte:1995,
+        $lt:2000
+    }
+}
+//Projection
+db.javaee_third_batch.find({},{ObjectId:1})
+
+//Select all but not object id
+db.javaee_third_batch.find({},{_id:0})
+
+//just get actor firstName
+find({},{"actors.firstName":1})
+
+//Find and sort
+db.javaee_third_batch.find({}).sort({year:-1})
+
+db.javaee_third_batch.updateOne({ "_id" : ObjectId("610e84da6dd25573c0032833")},{
+    $set:{
+        "name":"Movie Update 3",
+        "year":1998,
+        "director":"Update Director"
+    }
+   
+})
+//Update Many
+db.javaee_third_batch.updateMany({ "year" : 1995},
+{
+    $set:{
+        "year":2005,
+    }
+   
+})
