@@ -1,0 +1,41 @@
+<html>
+    <script>
+        let arr = [
+            {
+                name : "Aung Aung",
+                gender: "male",
+                age : 32,
+            },
+            {
+                name : "Maung Maung",
+                gender: "male",
+                age : 18,
+            },
+            {
+                name : "Hla Hla",
+                gender: "female",
+                age : 16,
+            },
+            {
+                name : "Kyu Kyu",
+                gender: "female",
+                age : 21,
+            },
+            {
+                name : "Aung Naing",
+                gender: "male",
+                age : 13,
+            },
+        ];
+        console.log("Arr ",arr);
+        let isAdult = human=>human.age >18;   
+        let adult = arr.filter(isAdult)
+                        .map(human=>human.gender=='male'
+                                    ?'U '+human.name
+                                    :'Daw '+human.name);
+        
+        console.log("Adult ",adult);
+        console.log("Names ",arr.map(human=>human.name));
+      
+    </script>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <script>
+        let arr = [
+            {
+                name : "Aung Aung",
+                gender: "male",
+                age : 32,
+            },
+            {
+                name : "Maung Maung",
+                gender: "male",
+                age : 18,
+            },
+            {
+                name : "Hla Hla",
+                gender: "female",
+                age : 16,
+            },
+            {
+                name : "Htwe htwe",
+                gender: "female",
+                age : 19,
+            },
+            {
+                name : "Kyu Kyu",
+                gender: "female",
+                age : 21,
+            },
+            {
+                name : "Aung Naing",
+                gender: "male",
+                age : 13,
+            },
+        ];
+        console.log("Arr ",arr);
+        let isAdult = h => h.age > 18;
+        let isFemale = h => h.gender == 'female';
+        let adultWomanCount = arr.filter(isAdult)
+                                .filter(isFemale).length;
+        console.log("Adult Female count ",adultWomanCount);
+
+        let count = arr.reduce((a,b)=>{
+           return isAdult(b) && isFemale(b) ? a+1:a;
+        },0)
+        console.log("Adult female count ",count);
+
+        let names = arr.reduce((a,b)=>{
+            return a.concat(b.name);
+        },[]);
+        console.log("Names ",names);
+    </script>
+</html>

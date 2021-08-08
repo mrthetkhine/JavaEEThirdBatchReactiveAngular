@@ -1,0 +1,34 @@
+<html>
+    <script>
+        let arr = [10,12,15,35,50];
+        
+        //Imperative
+        let arr2 = [];
+        for(let i=0;i< arr.length;i++)
+        {
+            if( arr[i] %2 ==0)
+            {
+                arr2.push(arr[i]);
+            }
+           
+        }
+        console.log("Arr 2",arr2);
+        //FP
+        let isEven = (x)=>x%2==0;//Predicate function
+        let not = predicate=>x =>!predicate(x)
+        
+        //let isOdd =(x)=> !isEven(x);
+        let isOdd = not(isEven);
+        console.log("isEven(4) ",isEven(4));
+        console.log("isEven(5) ",isEven(5));
+
+        let evenArray = arr.filter(isEven);
+        console.log("Even array ",evenArray);
+        console.log("odd array ", arr.filter(isOdd));
+
+        let isZero = x=> x==0;
+        let notZero = not(isZero);
+        console.log(" Not zero 0 ",notZero(0));
+        console.log(" Not zero 1",notZero(1));
+    </script>
+</html>
