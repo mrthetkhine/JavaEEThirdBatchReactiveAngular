@@ -9,5 +9,5 @@ import com.javaeethirdbatch.model.Movie;
 
 @Repository
 public interface MovieRepository extends ReactiveMongoRepository<Movie, String> {
-
+	
 }
