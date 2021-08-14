@@ -1,0 +1,24 @@
+<html>
+    <script>
+    function hello(msg)
+    {
+        console.log("Hello ",msg);
+    }
+    hello("how are you");
+
+    let met = hello;
+    met("Hey");
+
+    function execute(func)
+    {
+        console.log("Execute ");
+        func();
+    }
+    execute(met);
+    function getMe()
+    {
+        return execute;
+    }
+    getMe()(met);
+    </script>
+</html>

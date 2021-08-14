@@ -1,0 +1,23 @@
+<html>
+    <script>
+        class Rectangle{
+            constructor(width,height)
+            {
+                this.width = width;
+                this.height = height;
+            }
+            get area()
+            {
+                return this.width* this.height;
+            }
+            calArea()
+            {
+                return this.width* this.height;
+            }
+        }
+
+        let r = new Rectangle(10,20);
+        console.log("Rect area ",r.area);
+        console.log("Rect area ",r.calArea());
+    </script>
+</html>
