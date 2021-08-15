@@ -1,0 +1,9 @@
+Counter
+<button (click)="inc()">+</button>
+ {{counter}}
+<button (click)="dec()">-</button>
+<ol>
+  <li *ngFor="let msg of messages" (click)="clickOnMessage(msg)">
+    {{msg}}
+  </li>
+</ol>

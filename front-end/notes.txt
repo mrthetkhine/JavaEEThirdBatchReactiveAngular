@@ -1,0 +1,10 @@
+Create Component
+ ng generate component components/HelloWorld
+
+ Create model
+ ng generate class model/Movie --type=model
+
+Create Service
+ng generate service service/MovieService
+
+ng generate component components/MovieList
