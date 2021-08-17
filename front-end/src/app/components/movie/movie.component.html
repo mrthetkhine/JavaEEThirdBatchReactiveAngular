@@ -1,5 +1,9 @@
-<div class="movie">
-  <div>Name {{movie.name}}</div>
-  <div>Year {{movie.year}}</div>
-  <div>Director {{movie.director}}</div>
-</div>
+<!--
+<td (mouseover)="mouseOver($event)">{{movie.name}}</td>
+-->
+<td >{{movie.name}}</td>
+<td>{{movie.year}}</td>
+<td> {{movie.director}}</td>
+<td>
+    <button class="btn btn-primary" (click)="btnMovieDelete()">Delete</button>
+</td>

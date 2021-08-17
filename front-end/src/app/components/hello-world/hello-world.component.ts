@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'hello-world',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hello-world.component.scss']
 })
 export class HelloWorldComponent implements OnInit {
+
+  @Input()
+  callBack!:Function;
 
   messages: Array<string> = ["apple","orange","banana"];
   counter :number = 0;
@@ -39,6 +42,11 @@ export class HelloWorldComponent implements OnInit {
   dec()
   {
     this.counter--;
+  }
+  reset()
+  {
+    this.counter = 0;
+    this.callBack();
   }
   clickOnMessage(msg:string)
   {

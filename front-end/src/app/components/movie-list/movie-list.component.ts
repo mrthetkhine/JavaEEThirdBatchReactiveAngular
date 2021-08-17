@@ -18,5 +18,20 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
     //console.log("Get Movie Service ", this.movieService.getAllMovie());
   }
-
+  deleteMovieHandler(movie:Movie)
+  {
+    console.log("Delete movie handler ",movie);
+    let index =this.movies.indexOf(movie);
+    console.log("Index ",index);
+    this.movies.splice(index,1);
+  }
+  changeAllMovie()
+  {
+    //this.movies = this.movies.reverse();
+    for(let i=0,len = this.movies.length;i< len;i++)
+    {
+      this.movies[i].name = this.movies[i].name.toUpperCase();
+      this.movies[i] = {...this.movies[i]};
+    }
+  }
 }
