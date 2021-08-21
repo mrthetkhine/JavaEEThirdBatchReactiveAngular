@@ -7,6 +7,10 @@ import { HelloWorldComponent } from './components/hello-world/hello-world.compon
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { CounterParentComponent } from './components/counter-parent/counter-parent.component';
+import { TemplateDemoComponent } from './components/template-demo/template-demo.component';
+import { NgSwtichDemoComponent } from './components/ng-swtich-demo/ng-swtich-demo.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SecondComponent } from './pages/second/second.component';
 
 
 @NgModule({
@@ -15,7 +19,11 @@ import { CounterParentComponent } from './components/counter-parent/counter-pare
     HelloWorldComponent,
     MovieListComponent,
     MovieComponent,
-    CounterParentComponent
+    CounterParentComponent,
+    TemplateDemoComponent,
+    NgSwtichDemoComponent,
+    HomeComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,

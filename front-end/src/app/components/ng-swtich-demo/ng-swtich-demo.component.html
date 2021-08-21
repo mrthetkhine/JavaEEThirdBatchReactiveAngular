@@ -1,0 +1,15 @@
+<div>
+  <div [ngSwitch]="userRole">
+    <div *ngSwitchCase="'admin'">
+      Admin menu
+    </div>
+    <div *ngSwitchCase="'user'">
+      User menu
+    </div>
+  </div>
+  <button (click)="changeUser()"
+          class="btn btn-primary"
+    >
+  Switch User
+  </button>
+</div>

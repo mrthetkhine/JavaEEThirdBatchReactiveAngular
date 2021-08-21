@@ -1,0 +1,19 @@
+<div [style.background-color]="'gray'">
+    Template Demo Component
+  {{getString() | uppercase}}
+
+  <h3 [attr.id]="'red'">Today is {{today | date :'dd/M/yy' |uppercase}}</h3>
+
+  <button (click)="setPrimary()"
+        class="btn btn-primary">Set Primary</button>
+  <button [disabled]="isDiabled"
+          (click)="toggle()"
+           class="btn "
+          [ngClass]="{'btn-outline-primary':isOutline}"
+          [class.btn-primary]="isPrimary">
+    Toggle
+  </button>
+
+  <div *ngIf="isOutline">Yes Outline</div>
+  <div *ngIf="isPrimary">Yes Primary</div>
+</div>
