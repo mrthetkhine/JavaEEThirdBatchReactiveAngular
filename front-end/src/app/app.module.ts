@@ -11,7 +11,11 @@ import { TemplateDemoComponent } from './components/template-demo/template-demo.
 import { NgSwtichDemoComponent } from './components/ng-swtich-demo/ng-swtich-demo.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SecondComponent } from './pages/second/second.component';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { PageNotFoundComponentComponent } from './pages/page-not-found-component/page-not-found-component.component';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,11 +27,15 @@ import { SecondComponent } from './pages/second/second.component';
     TemplateDemoComponent,
     NgSwtichDemoComponent,
     HomeComponent,
-    SecondComponent
+    SecondComponent,
+    MovieDetailComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

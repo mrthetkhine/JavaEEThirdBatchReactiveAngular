@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output,EventEmitter} from '@angular/core';
 import {Movie} from "../../model/movie.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'tr[app-movie]',
@@ -14,7 +15,7 @@ export class MovieComponent implements OnInit {
   @Output()
   deleteEvent = new EventEmitter<Movie>();
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     console.log("MovieComponent ngOnInit ",this.movie);
@@ -33,5 +34,11 @@ export class MovieComponent implements OnInit {
   {
     console.log("Delete movie ",this.movie);
     this.deleteEvent.emit(this.movie);
+  }
+  goToMovieDetail()
+  {
+    console.log("Go to movie detail ",this.movie.id);
+    this.router.navigate(['movies/'+this.movie.id]);
+
   }
 }

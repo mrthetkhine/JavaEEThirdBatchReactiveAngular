@@ -1,4 +1,70 @@
 <div class="container">
+  <button (click)="openModal(template)" class="btn btn-primary">New</button>
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">New Movie</h4>
+      <button type="button" class="btn close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+
+        <div class="mb-3 row">
+          <label for="name" class="form-label col-sm-3">
+            Name
+          </label>
+          <div class="col-sm-8">
+            <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="form-control sm-8" />
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="movieFormControl.name.touched && movieFormControl.name.errors?.required">Name Required</div>
+          </div>
+
+        </div>
+
+        <div class="mb-3 row">
+          <label for="year" class="form-label col-sm-3">
+            Year
+          </label>
+          <div class="col-sm-8">
+            <input id="year" type="text" formControlName="year" class="form-control sm-8"/>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="movieFormControl.year.touched && movieFormControl.year.errors?.required">Year Required</div>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="movieFormControl.year.touched && movieFormControl.year.errors?.minlength">Min Length should be 4</div>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="movieFormControl.year.touched && movieFormControl.year.errors?.maxlength">Max Length should be 4</div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="director" class="form-label col-sm-3">
+            Director
+          </label>
+          <div class="col-sm-8">
+            <input id="director" type="text" formControlName="director" class="form-control sm-8"/>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="movieFormControl.director.touched && movieFormControl.director.errors?.required">Director Required</div>
+          </div>
+        </div>
+
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="!movieForm.valid">Submit</button>
+      <button (click)="closeNewMovieModal()" class="btn btn-outline-primary">
+        Close
+      </button>
+    </div>
+    </form>
+  </ng-template>
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -7,6 +73,7 @@
         <th>Year</th>
         <th>Director</th>
         <th>Action</th>
+        <th>Detail</th>
       </tr>
     </thead>
     <tbody>

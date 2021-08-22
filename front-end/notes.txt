@@ -10,3 +10,6 @@ ng generate service service/MovieService
 ng generate component components/MovieList
 
  ng generate component pages/Home
+
+ng generate component pages/MovieDetail
+ng generate component pages/PageNotFoundComponent
