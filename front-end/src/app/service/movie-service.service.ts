@@ -17,4 +17,8 @@ export class MovieService {
   getAllMovie():Array<Movie>{
     return this.movies;
   }
+  addMovie(movie:Movie)
+  {
+    this.movies.push(movie);
+  }
 }

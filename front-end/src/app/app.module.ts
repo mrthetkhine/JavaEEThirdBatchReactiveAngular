@@ -15,7 +15,7 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
 import { PageNotFoundComponentComponent } from './pages/page-not-found-component/page-not-found-component.component';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     AppRoutingModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

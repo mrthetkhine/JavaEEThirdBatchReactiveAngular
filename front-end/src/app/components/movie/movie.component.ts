@@ -15,6 +15,9 @@ export class MovieComponent implements OnInit {
   @Output()
   deleteEvent = new EventEmitter<Movie>();
 
+  @Output()
+  editEvent = new EventEmitter<Movie>();
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
@@ -40,5 +43,9 @@ export class MovieComponent implements OnInit {
     console.log("Go to movie detail ",this.movie.id);
     this.router.navigate(['movies/'+this.movie.id]);
 
+  }
+  onEditClick()
+  {
+    this.editEvent.emit(this.movie);
   }
 }

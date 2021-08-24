@@ -1,1 +1,100 @@
-<h3>Second Page</h3>
+<div>
+  <h1>Template Form Demo</h1>
+  <div class="container">
+
+
+  <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3 row ">
+      <label for="name" class="form-label col-sm-2">
+        Name
+      </label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="movie.name"
+          required
+          id="name"
+          #name="ngModel"
+          class="form-control" />
+      </div>
+      <div [hidden]="name.valid || name.pristine"
+           class="alert alert-danger col-sm-4">
+        Name required
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="year" class="form-label col-sm-2">
+        Year
+      </label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="year"
+          name="year"
+          [(ngModel)]="movie.year"
+          required
+          #year="ngModel"
+          class="form-control" />
+
+      </div>
+      <div [hidden]="year.valid || year.pristine"
+           class="alert alert-danger col-sm-4">
+        Year required
+      </div>
+
+    </div>
+
+    <div class="mb-3 row">
+      <label for="director" class="form-label col-sm-2">
+        Director
+      </label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="director"
+          [(ngModel)]="movie.director"
+          required
+          #director="ngModel"
+          class="form-control" />
+      </div>
+      <div [hidden]="director.valid || director.pristine"
+           class="alert alert-danger col-sm-4">
+        Director required
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="date" class="form-label col-sm-2">
+        Date
+      </label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          name="date"
+          [(ngModel)]="model.date"
+          required
+          #date="ngModel"
+          class="form-control" />
+      </div>
+      <div [hidden]="date.valid || date.pristine"
+           class="alert alert-danger col-sm-4">
+        Date required
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label  class="form-label col-sm-2">
+
+      </label>
+      <div class="col-sm-4">
+        <button class="btn btn-primary" type="submit"
+                [disabled]="!myForm.valid">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+  <button class="btn btn-outline-primary" (click)="changeModel()"> Change Model</button>
+  <button class="btn btn-outline-primary" (click)="viewModel()"> View Model</button>
+</div>

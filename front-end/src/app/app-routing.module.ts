@@ -8,7 +8,7 @@ import {PageNotFoundComponentComponent} from "./pages/page-not-found-component/p
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'second-page', component: SecondComponent },
+  { path: 'template-form-demo', component: SecondComponent },
   { path: 'movies', component: MovieListComponent },
   { path: 'movies/:id', component: MovieDetailComponent },
   { path: '**', component: PageNotFoundComponentComponent },

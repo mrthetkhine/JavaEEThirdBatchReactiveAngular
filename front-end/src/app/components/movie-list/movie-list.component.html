@@ -1,9 +1,13 @@
 <div class="container">
-  <button (click)="openModal(template)" class="btn btn-primary">New</button>
+  <button (click)="openNewMovieDlg(template)" class="btn btn-primary">
+    New
+  </button>
+
+  <!-- Movie Dlg template -->
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">New Movie</h4>
-      <button type="button" class="btn close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <h4 class="modal-title pull-left">{{editMode? "Edit ": "New"}} Movie</h4>
+      <button type="button" class="btn close pull-right" aria-label="Close" (click)="movieModalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -40,6 +44,7 @@
                  *ngIf="movieFormControl.year.touched && movieFormControl.year.errors?.maxlength">Max Length should be 4</div>
           </div>
         </div>
+
         <div class="mb-3 row">
           <label for="director" class="form-label col-sm-3">
             Director
@@ -57,13 +62,19 @@
     <div class="modal-footer">
       <button type="submit"
               class="btn btn-primary"
-              [disabled]="!movieForm.valid">Submit</button>
-      <button (click)="closeNewMovieModal()" class="btn btn-outline-primary">
+              [disabled]="!movieForm.valid">
+              {{editMode? "Update ": "Save"}}
+      </button>
+      <button (click)="closeNewMovieModal()"
+              class="btn btn-outline-primary"
+              type="button"
+        >
         Close
       </button>
     </div>
     </form>
   </ng-template>
+
 
   <table class="table table-striped">
     <thead>
@@ -73,6 +84,7 @@
         <th>Year</th>
         <th>Director</th>
         <th>Action</th>
+        <th>Edit</th>
         <th>Detail</th>
       </tr>
     </thead>
@@ -80,6 +92,7 @@
       <tr app-movie *ngFor="let movie of movies"
           [movie]="movie"
           (deleteEvent)="deleteMovieHandler($event)"
+          (editEvent)="onEditHandler($event)"
         >
       </tr>
     </tbody>

@@ -8,8 +8,11 @@
     <button class="btn btn-primary" (click)="btnMovieDelete()">Delete</button>
 </td>
 <td>
+  <button class="btn btn-primary" (click)="onEditClick()">Edit</button>
+</td>
+<td>
   <!--
   <button class="btn btn-primary" (click)="goToMovieDetail()">Detail</button>
   -->
-  <a class="nav-link active"routerLink="/movies/{{movie.id}}" routerLinkActive="active">Home</a>
+  <a class="nav-link active"routerLink="/movies/{{movie.id}}" routerLinkActive="active">Detail</a>
 </td>
