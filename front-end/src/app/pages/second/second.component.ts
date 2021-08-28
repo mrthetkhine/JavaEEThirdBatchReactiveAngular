@@ -8,7 +8,7 @@ import {Movie} from "../../model/movie.model";
 })
 export class SecondComponent implements OnInit {
 
-  movie:Movie = new Movie(1,"Titanic",1995,"Jame Cameron");
+  movie:Movie = new Movie("1","Titanic",1995,"Jame Cameron");
   model = {
     date :new Date()
   }
@@ -23,11 +23,12 @@ export class SecondComponent implements OnInit {
   }
   changeModel()
   {
-    this.movie = new Movie(1,"New Titanic",1995,"New Jame Cameron");
+    this.movie = new Movie("1","New Titanic",1995,"New Jame Cameron");
   }
   viewModel()
   {
     console.log("Movie ",this.movie);
+    console.log("Date ",this.model.date);
   }
 
 }

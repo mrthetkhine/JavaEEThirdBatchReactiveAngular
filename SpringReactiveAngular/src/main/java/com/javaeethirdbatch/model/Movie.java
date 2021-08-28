@@ -25,9 +25,10 @@ public class Movie {
 	    @NotNull
 	    private Integer year;
 
+	    @NotNull
 	    private String director;
 	    
-	    @NotNull
+	    //@NotNull
 	    private Date createdAt;
 	    
 	    private List<Actor> actors;

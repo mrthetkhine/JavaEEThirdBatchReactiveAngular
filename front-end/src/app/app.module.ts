@@ -16,6 +16,9 @@ import { PageNotFoundComponentComponent } from './pages/page-not-found-component
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     SecondComponent,
     MovieDetailComponent,
-    PageNotFoundComponentComponent
+    PageNotFoundComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ModalModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

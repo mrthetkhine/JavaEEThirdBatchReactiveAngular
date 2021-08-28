@@ -16,7 +16,7 @@ export class MovieListComponent implements OnInit {
 
   @ViewChild('template', { static: false }) template:any;
 
-  movies: Array<Movie>;
+  movies: Array<Movie> = [];
   movieModalRef!: BsModalRef;
 
   /*
@@ -45,42 +45,33 @@ export class MovieListComponent implements OnInit {
               private movieService: MovieService,
               private router:Router,
               private modalService: BsModalService) {
-    this.movies = this.movieService.getAllMovie();
-    console.log("Movies ",this.movies);
+    //this.movies = this.movieService.getAllMovie();
+    this.movieService.fetchAllMovie().subscribe(movies=>{
+      this.movies = movies;
+      console.log("Movies ",this.movies);
+    });
+
   }
 
   ngOnInit(): void {
     //console.log("Get Movie Service ", this.movieService.getAllMovie());
   }
-  deleteMovieHandler(movie:Movie)
-  {
-    Swal.fire({
-      title: 'Are you sure you want to delete?',
-      /*text: 'You will not be able to recover this imaginary file!',*/
-     /* icon: 'warning',*/
-      showCancelButton: true,
-      confirmButtonText: 'Confirm',
-      cancelButtonText: 'Cancel'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.deleteMovie(movie);
 
-      }
-    })
-
-
-  }
 
   private deleteMovie(movie: Movie) {
     console.log("Delete movie handler ", movie);
-    let index = this.movies.indexOf(movie);
-    console.log("Index ", index);
-    this.movies.splice(index, 1);
-    Swal.fire(
-      'Deleted!',
-      'Your imaginary file has been deleted.',
-      'success'
-    )
+    this.movieService.deleteMovie(movie).subscribe(response=>{
+      console.log("Deleted response ",response);
+      let index = this.movies.indexOf(movie);
+      console.log("Index ", index);
+      this.movies.splice(index, 1);
+      Swal.fire(
+        'Deleted!',
+        'Your imaginary file has been deleted.',
+        'success'
+      )
+    });
+
   }
 
   changeAllMovie()
@@ -124,10 +115,14 @@ export class MovieListComponent implements OnInit {
   private saveNewMovie() {
     let json = {...this.movieForm.value};
     console.log("On submit ", json);
-    this.movieModalRef.hide();
+
 
     let movie: Movie = json;
-    this.movieService.addMovie(movie);
+
+    this.movieService.saveMovie(movie).subscribe(newMovie=>{
+      this.movies.push(newMovie);
+      this.movieModalRef.hide();
+    });
   }
   private updateMovie()
   {
@@ -136,8 +131,12 @@ export class MovieListComponent implements OnInit {
 
     let json = {...this.movieForm.value};
     let movie:Movie = json;
-    this.movies[this.editIndex] = movie;
-    this.movieModalRef.hide();
+
+    this.movieService.updateMovie(movie).subscribe(updatedMovie=>{
+      this.movies[this.editIndex] = updatedMovie;
+      this.movieModalRef.hide();
+    });
+
   }
   onEditHandler(movie:Movie)
   {
@@ -151,5 +150,22 @@ export class MovieListComponent implements OnInit {
     this.movieForm.patchValue(movie);
     this.movieModalRef = this.modalService.show(this.template);
   }
+  deleteMovieHandler(movie:Movie)
+  {
+    Swal.fire({
+      title: 'Are you sure you want to delete?',
+      /*text: 'You will not be able to recover this imaginary file!',*/
+      /* icon: 'warning',*/
+      showCancelButton: true,
+      confirmButtonText: 'Confirm',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteMovie(movie);
 
+      }
+    })
+
+
+  }
 }

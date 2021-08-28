@@ -20,18 +20,19 @@ export class MovieComponent implements OnInit {
 
   constructor(private router:Router) { }
 
+
   ngOnInit(): void {
-    console.log("MovieComponent ngOnInit ",this.movie);
+    //console.log("MovieComponent ngOnInit ",this.movie);
   }
   ngOnChanges():void{
-    console.log("MovieComponent ngOnChanges ",this.movie);
+    //console.log("MovieComponent ngOnChanges ",this.movie);
   }
   ngOnDestroy():void{
-    console.log("MovieComponent Destroyed ",this.movie);
+    //console.log("MovieComponent Destroyed ",this.movie);
   }
   mouseOver(e:MouseEvent)
   {
-    console.log("Mouseover ",e);
+    //console.log("Mouseover ",e);
   }
   btnMovieDelete()
   {

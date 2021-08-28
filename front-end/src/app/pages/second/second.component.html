@@ -75,6 +75,7 @@
           [(ngModel)]="model.date"
           required
           #date="ngModel"
+          bsDatepicker
           class="form-control" />
       </div>
       <div [hidden]="date.valid || date.pristine"
