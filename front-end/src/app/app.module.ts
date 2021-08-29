@@ -18,7 +18,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './pages/login/login.component';
+import {TokenInterceptor} from "./auth/interceptor/TokenInterceptor";
+import { LogoutComponent } from './pages/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import {HttpClientModule} from "@angular/common/http";
     SecondComponent,
     MovieDetailComponent,
     PageNotFoundComponentComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,13 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,3 +13,6 @@ ng generate component components/MovieList
 
 ng generate component pages/MovieDetail
 ng generate component pages/PageNotFoundComponent
+
+ng generate guard auth/auth
+ng generate component pages/Login
